@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/base.css' %}" />
+		<title>{% block title %}{% endblock %}</title>
+	</head>
+	<body>
+		<main>
+			{% block main_tag %}{% endblock %}
+		</main>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		{% block bottom_scripts %}{% endblock %}
+	</body>
+</html>
