@@ -1,3 +1,8 @@
 body, html { min-height: 100%; }
 a, a:link, a:visited, a:hover, a:active { color: #000; text-decoration: none; }
 body { background-color: #FFF; color: #000; font-family: Verdana, sans-serif; }
+
+form.login-form { margin: 15px auto; width: 200px; }
+form.login-form input { display: block; margin: 15px 0px; width: 100%; }
+
+div.error-msg { color: #800000; margin: 5px 0px; text-align: center; }
