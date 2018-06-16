@@ -1,0 +1,14 @@
+{% extends 'base/chat.base.html' %}
+{% block title %}Welcome To Chat{% endblock %}
+{% block main_tag %}
+	<div>Enter a new Display name to change your name to (like 'Batman')</div>
+	{% if error_msg != "" %}
+		<div class="error-msg">{{error_msg}}</div>
+	{% endif %}
+	<form method="post" class="new-chat">
+		<input type="text" name="new-user-name" placeholder="Enter New Display Name" maxlength="50" />
+		<input type="submit" value="Create New Chat" />
+		{% csrf_token %}
+	</form>
+{% endblock %}
+{% block bottom_scripts %}{% endblock %}

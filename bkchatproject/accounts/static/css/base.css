@@ -26,3 +26,8 @@ main div.chat-window-outer div.chat-window div.message span.user { padding: 0px 
 main div.chat-window-outer div.chat-window div.message span.date-time { padding: 0px 0px 0px 5px; vertical-align: top; }
 main div.chat-window-outer div.chat-window div.message span.text { padding: 0px 0px 0px 10px; width: 300px; }
 main div.chat-window-outer div.chat-window div.message span.like { float: right; padding: 0px 10px 0px 0px; }
+main div.room-container { padding: 15px 10px; }
+main div.room-container a { display: block; padding: 15px 10px; }
+main form.new-chat { font-size: 14px; padding: 15px; }
+main form.new-chat input { display: block; margin: 5px 0px; }
+main form.new-chat input[type="text"] { height: 25px; width: 250px; }

@@ -1,0 +1,18 @@
+{% extends 'base/chat.base.html' %}
+{% block title %}Welcome To Chat{% endblock %}
+{% block main_tag %}
+	{% if error_msg != "" %}
+		<div class="error-msg">{{error_msg}}</div>
+	{% endif %}
+	<form method="post" class="new-chat">
+		<input type="text" name="new-chat-name" placeholder="New Chat Name" maxlength="50" />
+		<input type="submit" value="Create New Chat" />
+		{% csrf_token %}
+	</form>
+	<div class="room-container">
+		{% for room in chat_rooms %}
+			<a href="{% url 'chat:specific_room' room.ChatRoomForUser.id %}">{{room.ChatRoomForUser.DisplayName}}</a>
+		{% endfor %}
+	</div>
+{% endblock %}
+{% block bottom_scripts %}{% endblock %}

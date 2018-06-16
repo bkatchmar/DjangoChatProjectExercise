@@ -3,15 +3,15 @@
 <html lang="en-US">
 	<head>
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/base.css' %}?d=201806160116" />
+		<link rel="stylesheet" href="{% static 'css/base.css' %}?d=201806161003" />
 		<title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
 		<header>
 			<nav>
 				<a href="{% url 'chat:all_chats' %}">All Chats</a>
-				<a href="#">My Chats</a>
-				<a href="#">My Settings</a>
+				<a href="{% url 'chat:my_chats' %}">My Chats</a>
+				<a href="{% url 'chat:my_settings' %}">My Settings</a>
 			</nav>
 		</header>
 		<main>

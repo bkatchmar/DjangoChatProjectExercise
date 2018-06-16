@@ -1,5 +1,5 @@
 {% extends 'base/chat.base.html' %}
-{% block title %}Welcome To Chat{% endblock %}
+{% block title %}Welcome To {{chat_room.DisplayName}} Chat{% endblock %}
 {% block main_tag %}
 	<div class="chat-window-outer">
 		<div class="chat-window">
@@ -8,7 +8,7 @@
 					<span class="user">{{msg.username}}</span>
 					<span class="date-time">{{msg.datetime}}</span>
 					<span class="text">{{msg.text}}</span>
-					{% if msg.Liked %}
+					{% if msg.liked %}
 						<span class="like">Liked</span>
 					{% else %}
 						<span class="like">Like</span>
