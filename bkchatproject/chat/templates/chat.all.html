@@ -1,0 +1,10 @@
+{% extends 'base/chat.base.html' %}
+{% block title %}Welcome To Chat{% endblock %}
+{% block main_tag %}
+	<div class="room-container">
+		{% for room in chat_rooms %}
+			<a href="{% url 'chat:specific_room' room.id %}">{{room.DisplayName}}</a>
+		{% endfor %}
+	</div>
+{% endblock %}
+{% block bottom_scripts %}{% endblock %}

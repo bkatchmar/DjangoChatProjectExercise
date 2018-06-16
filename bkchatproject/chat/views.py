@@ -69,3 +69,15 @@ class ChatHomeView(LoginRequiredMixin, TemplateView):
             )
         
         return context
+
+class AllChatRoomsView(LoginRequiredMixin, TemplateView):
+    template_name = "chat.all.html"
+    
+    def get(self, request, **kwargs):
+        context = self.get_context_data()
+        return render(request, self.template_name, context)
+    
+    def get_context_data(self, **kwargs):
+        context = super(AllChatRoomsView, self).get_context_data(**kwargs)
+        context["chat_rooms"] = ChatRoom.objects.all()
+        return context
