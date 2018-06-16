@@ -3,11 +3,17 @@
 <html lang="en-US">
 	<head>
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/base.css' %}?" />
+		<link rel="stylesheet" href="{% static 'css/base.css' %}?d=201806160116" />
 		<title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
-		<header></header>
+		<header>
+			<nav>
+				<a href="#">All Chats</a>
+				<a href="#">My Chats</a>
+				<a href="#">My Settings</a>
+			</nav>
+		</header>
 		<main>
 			{% block main_tag %}{% endblock %}
 		</main>

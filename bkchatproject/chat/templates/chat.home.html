@@ -1,6 +1,26 @@
 {% extends 'base/chat.base.html' %}
 {% block title %}Welcome To Chat{% endblock %}
 {% block main_tag %}
-	<div>Welcome to the chat program</div>
+	<div class="chat-window-outer">
+		<div class="chat-window">
+			{% for msg in chat_messages %}
+				<div class="message">
+					<span class="user">{{msg.username}}</span>
+					<span class="date-time">{{msg.datetime}}</span>
+					<span class="text">{{msg.text}}</span>
+					{% if msg.Liked %}
+						<span class="like">Liked</span>
+					{% else %}
+						<span class="like">Like</span>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<form method="post" class="chat-entry">
+		<input name="message-body" placeholder="Enter Your Message For The World Here" type="text" maxlength="128" />
+		<input type="submit" value="Chat" />
+		{% csrf_token %}
+	</form>
 {% endblock %}
 {% block bottom_scripts %}{% endblock %}
