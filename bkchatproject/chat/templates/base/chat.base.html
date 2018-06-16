@@ -3,10 +3,11 @@
 <html lang="en-US">
 	<head>
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/base.css' %}?d=2018" />
+		<link rel="stylesheet" href="{% static 'css/base.css' %}?" />
 		<title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
+		<header></header>
 		<main>
 			{% block main_tag %}{% endblock %}
 		</main>

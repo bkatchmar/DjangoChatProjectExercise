@@ -1,0 +1,16 @@
+{% extends 'base/accounts.base.html' %}
+{% block title %}Welcome To A Super Cool Chat Program - Create An Account To Get Started{% endblock %}
+{% block main_tag %}
+	{% if error_msg != "" %}
+		<div class="error-msg">{{error_msg}}</div>
+	{% endif %}
+	<div class="home-message">Welcome, please log into the chat program to get started</div>
+	<form method="post" class="login-form">
+		<input type="email" name="username" placeholder="E-mail address" required />
+		<input type="password" name="password" placeholder="Password" required />
+		<input type="submit" value="Sign In" />
+		{% csrf_token %}
+	</form>
+	<div class="home-message sign-up">Don't have an account? <a href="{% url 'accounts:account_create' %}">Sign Up!</a></div>
+{% endblock %}
+{% block bottom_scripts %}{% endblock %}
