@@ -1,0 +1,21 @@
+{% extends 'base/chat.base.html' %}
+{% block title %}Welcome To Chat{% endblock %}
+{% block main_tag %}
+	<table class="liked-messages">
+		<thead>
+			<tr>
+				<th>Chat Channel</th>
+				<th>Message Text</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for msg in messages %}
+				<tr>
+					<td>{{msg.MessageLiked.ChatRoomForMessage.DisplayName}}</td>
+					<td>{{msg.MessageLiked.MessageText}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
+{% block bottom_scripts %}{% endblock %}

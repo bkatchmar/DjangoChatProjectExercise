@@ -3,7 +3,7 @@
 <html lang="en-US">
 	<head>
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/base.css' %}?d=201806161003" />
+		<link rel="stylesheet" href="{% static 'css/base.css' %}?d=201806161249" />
 		<title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
@@ -12,11 +12,13 @@
 				<a href="{% url 'chat:all_chats' %}">All Chats</a>
 				<a href="{% url 'chat:my_chats' %}">My Chats</a>
 				<a href="{% url 'chat:my_settings' %}">My Settings</a>
+				<a href="{% url 'chat:my_liked_messages' %}">My Liked Messages</a>
 			</nav>
 		</header>
 		<main>
 			{% block main_tag %}{% endblock %}
 		</main>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		{% block bottom_scripts %}{% endblock %}
 	</body>

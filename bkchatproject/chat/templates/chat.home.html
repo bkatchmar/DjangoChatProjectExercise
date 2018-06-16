@@ -3,18 +3,26 @@
 {% block main_tag %}
 	<div class="chat-window-outer">
 		<div class="chat-window">
-			{% for msg in chat_messages %}
-				<div class="message">
-					<span class="user">{{msg.username}}</span>
-					<span class="date-time">{{msg.datetime}}</span>
-					<span class="text">{{msg.text}}</span>
-					{% if msg.liked %}
-						<span class="like">Liked</span>
-					{% else %}
-						<span class="like">Like</span>
-					{% endif %}
-				</div>
-			{% endfor %}
+			<table ng-app="chatApp" ng-controller="chatCtrl" ng-init="messageEditing=-1">
+				<tbody>
+					{% for msg in chat_messages %}
+						<tr>
+							<td class="user">{{msg.username}}</td>
+							<td class="date-time">{{msg.datetime}}</td>
+							<td class="text">
+								{% if msg.can_edit %}
+									<span class="can-edit" ng-click="messageEditing={{msg.id}}" ng-show="messageEditing==-1" ng-bind="messageText[{{msg.id}}]"></span>
+									<input type="text" ng-init="messageText[{{msg.id}}]='{{msg.text}}'" ng-value="messageText[{{msg.id}}]" ng-model="messageText[{{msg.id}}]" ng-show="messageEditing=={{msg.id}}" />
+									<span class="edit" ng-show="messageEditing=={{msg.id}}" ng-click="editMessage({{msg.id}})">Done Editing</span>
+								{% else %}
+									<span>{{msg.text}}</span>
+								{% endif %}
+							</td>
+							<td class="like" ng-init="{% if msg.liked %}likedMessage[{{msg.id}}]='Liked';{% else %}likedMessage[{{msg.id}}]='Like';{% endif %}" ng-click="likeMessage({{msg.id}})" ng-bind="likedMessage[{{msg.id}}]"></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<form method="post" class="chat-entry">
@@ -23,4 +31,37 @@
 		{% csrf_token %}
 	</form>
 {% endblock %}
-{% block bottom_scripts %}{% endblock %}
+{% block bottom_scripts %}
+	<script>
+		var chatApp = angular.module("chatApp", []); // AngularJS App
+		chatApp.controller("chatCtrl", function($scope, $http) {
+			$scope.likeMessage = function(message_id) {
+				var likeUrl = "/chat/api/like-message/" + message_id;
+				
+				$http.get(likeUrl).then(function(response) {
+					if (response["status"] === 200 && response["data"]["success"]) {
+						if ($scope.likedMessage[message_id] == "Like") {
+							$scope.likedMessage[message_id] = "Liked";
+						} else {
+							$scope.likedMessage[message_id] = "Like";
+						}
+					}
+				});
+			}
+			
+			$scope.editMessage = function(message_id) {
+				var editUrl = "/chat/api/edit-message/" + message_id;
+				var csrfToken = jQuery("form.chat-entry input[name='csrfmiddlewaretoken']").val();
+				$scope.messageEditing = -1;
+				
+				$http.post(
+						editUrl, 
+						{"text":$scope.messageText[message_id]},
+						{headers:{"Content-Type":"application/json","X-CSRFToken":csrfToken}})
+				.then(function(response) {
+					console.log(response["data"]);
+				});
+			}
+		});
+	</script>
+{% endblock %}

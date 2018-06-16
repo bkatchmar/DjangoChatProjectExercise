@@ -16,18 +16,24 @@ main div.home-message { text-align: center; }
 main div.home-message.sign-up { font-size: 12px; }
 main div.chat-window-outer { background-color: #DDD; border-radius: 8px; height: 500px; margin: 0px 5px; padding: 25px 15px; text-align: center; -moz-border-radius: 8px; -webkit-border-radius: 8px; }
 main div.chat-window-outer div.chat-window { background-color: #FFF; height: 100%; overflow-y: scroll; padding: 0px; }
+main div.chat-window-outer div.chat-window table { width: 100%; }
+main div.chat-window-outer div.chat-window table tr {}
+main div.chat-window-outer div.chat-window table tr td { padding: 5px 0px; }
+main div.chat-window-outer div.chat-window table tr td.user {}
+main div.chat-window-outer div.chat-window table tr td.date-time {}
+main div.chat-window-outer div.chat-window table tr td.text {}
+main div.chat-window-outer div.chat-window table tr td.text span.can-edit { cursor: pointer; }
+main div.chat-window-outer div.chat-window table tr td.text input { font-size: 14px; width: 100%; }
+main div.chat-window-outer div.chat-window table tr td.text span.edit { cursor: pointer; }
+main div.chat-window-outer div.chat-window table tr td.like { cursor: pointer; }
 main form.chat-entry { background-color: #DDD; border-radius: 8px; margin: 5px; padding: 5px 0px; text-align: center; -moz-border-radius: 8px; -webkit-border-radius: 8px; }
 main form.chat-entry input { font-size: 16px; }
 main form.chat-entry input[type="text"] { width: 80%; }
 main form.chat-entry input[type="submit"] { width: 15%; }
-main div.chat-window-outer div.chat-window div.message { padding: 10px 0px; position: relative; text-align: left; }
-main div.chat-window-outer div.chat-window div.message span { display: inline-block; }
-main div.chat-window-outer div.chat-window div.message span.user { padding: 0px 0px 0px 5px; vertical-align: top; }
-main div.chat-window-outer div.chat-window div.message span.date-time { padding: 0px 0px 0px 5px; vertical-align: top; }
-main div.chat-window-outer div.chat-window div.message span.text { padding: 0px 0px 0px 10px; width: 300px; }
-main div.chat-window-outer div.chat-window div.message span.like { float: right; padding: 0px 10px 0px 0px; }
 main div.room-container { padding: 15px 10px; }
 main div.room-container a { display: block; padding: 15px 10px; }
 main form.new-chat { font-size: 14px; padding: 15px; }
 main form.new-chat input { display: block; margin: 5px 0px; }
 main form.new-chat input[type="text"] { height: 25px; width: 250px; }
+main table.liked-messages { margin: 15px; }
+main table.liked-messages th, td { padding: 5px; text-align: center; }
